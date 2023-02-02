@@ -17,10 +17,6 @@
     font-size: 20px;
 }
 
-span {
-    content: "\003F";
-  }
-
 button {
     color: white;
     background-color: #df6717;
@@ -56,6 +52,10 @@ td {
     flex-direction: row;
     margin: 20px;
     width: auto;
+}
+
+.tr-bg-color{
+    background-color: #cccccce1;
 }
 
 @media screen and (max-width: 500px) {

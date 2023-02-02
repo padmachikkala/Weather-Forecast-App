@@ -1,7 +1,7 @@
 
   <header class="header">
     <div class="header_title">
-      <h1>{{title}}</h1>
+      <h1>Weather in your city</h1>
     </div>
     <div class="header_input">
       <input class="input_data" type="text" (change)="getLocation($event)">
@@ -16,30 +16,30 @@
 
   <div class="table_container">
     <div *ngFor="let res of this.eachRecord; let i = index">
-    <table *ngIf="i <= 4">
+    <table style="width: 250px; height: 200px;" *ngIf= "i <= 4">
        <tr style="background-color: #ff7300">
-        <th>Date: {{res.dt_txt | date:'dd/MM/yyyy'}}</th>
-        <th></th>
+          <th>Date: {{res.dt_txt | date:'dd/MM/yyyy'}}</th>
+          <th></th>
        </tr>
-       <tr style="background-color: #cccccce1;">
-        <th>Temperature</th>
-        <th></th>
+       <tr class="tr-bg-color">
+          <th>Temperature</th>
+          <th></th>
        </tr>
-       <tr style="background-color: #cccccce1">
-        <td>Min</td>
-        <td>Max</td>
+       <tr class="tr-bg-color">
+          <td>Min</td>
+          <td>Max</td>
        </tr>
-       <tr style="background-color: #cccccce1;">
-        <td>{{res?.main?.temp_min}}</td>
-        <td>{{res?.main?.temp_max}}</td>
+       <tr class="tr-bg-color">
+          <td>{{res?.main?.temp_min}}</td>
+          <td>{{res?.main?.temp_max}}</td>
        </tr>
        <tr>
-        <td>Pressure</td>
-        <td>{{res?.main?.pressure}}</td>
+          <td>Pressure</td>
+          <td>{{res?.main?.pressure}}</td>
       </tr>
       <tr>
-      <td>Humadity</td>
-      <td>{{res?.main?.humidity}}</td>
+        <td>Humadity</td>
+        <td>{{res?.main?.humidity}}</td>
       </tr>
     </table>
 </div>

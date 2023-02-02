@@ -10,16 +10,14 @@ import {HttpClient} from '@angular/common/http'
 export class AppComponent {
   location: any;
   resData: any;
-  res:any;
-  data: any;
+  resGeo:any;
   eachRecord:any = [];
   firstDate: any;
-  load: boolean = false;
-  title = 'Weather in your city';
+  load: boolean;
 
   constructor(private httpClient: HttpClient,
     private datePipe: DatePipe) {
-
+     this.load = false;
     }
   
 
@@ -27,13 +25,13 @@ export class AppComponent {
       this.load = true
       const locApi = `http://api.openweathermap.org/geo/1.0/direct?q=${this.location}&limit=5&appid=1635890035cbba097fd5c26c8ea672a1`;
       this.httpClient.get(locApi).subscribe((response) => {
-        this.res = response;
-        var lat = this.res[0].lat;
-        var lon = this.res[0].lon;
+        this.resGeo = response;
+        var lat = this.resGeo[0].lat;
+        var lon = this.resGeo[0].lon;
         const forecastApi = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=1635890035cbba097fd5c26c8ea672a1`;
         this.httpClient.get(forecastApi).subscribe((response) => {          
-          this.data = response;
-          for(var eachItem of this.data?.list){
+          this.resData = response;
+          for(var eachItem of this.resData?.list){
              console.log("res", eachItem.dt_txt)
              this.firstDate = this.datePipe.transform(eachItem.dt_txt, "dd/MM/yyyy");
              console.log("firstDate", this.firstDate);
